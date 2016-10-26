@@ -24,8 +24,7 @@
                                     <constraint firstAttribute="height" constant="300" id="u8n-oz-j2p"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recuerda escribir texto en Info.plist para &quot;Privacy - Photo Library Usage Description&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2H-Mp-KTj">
-                                <frame key="frameInset" minX="16" minY="394" width="343" height="113"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuerda escribir texto en Info.plist para &quot;Privacy - Photo Library Usage Description&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2H-Mp-KTj">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +54,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imagenFoto" destination="B7Q-qg-8Ob" id="fgr-J8-Abu"/>
-                        <outlet property="saveButtonClicked" destination="Y9d-5z-gD9" id="5c6-Wi-FXJ"/>
+                        <outlet property="laberText" destination="Z2H-Mp-KTj" id="6DM-Lt-ctF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

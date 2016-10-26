@@ -12,6 +12,7 @@ import Photos
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var imagenFoto: UIImageView!
+    @IBOutlet var laberText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +40,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
         NSLog("Guardar Imagen")
+        
+        let nombreImagen = "image-\(Date().timeIntervalSince1970).jpg"
+        
+        do {
+           let imagenPath = getDocumnetsDirectory().appendingPathComponent(nombreImagen)
+            
+            //Las imagenes no se pueden guardar de forma directa, hay que trabajar a nivel de bytes con UIImageJPEGRepresentation
+            if let jpegData = UIImageJPEGRepresentation(self.imagenFoto.image!, 0.8){
+                try jpegData.write(to: imagenPath, options: [.atomicWrite])
+            }
+            laberText.text = "😁 Imagen guardada con exito"
+            
+            NSLog("Save Imagen \(nombreImagen) in path \(imagenPath)")
+            
+        }catch let error as NSError {
+            NSLog("Error \(error): \(error.userInfo) ")
+        }
+        
+
+        
     }
     
     
+    //Retornamos la URL primera carpeta del usuario que encontremos
+    func getDocumnetsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
     
     //MARK: UIImagePickerControllerDelegate
