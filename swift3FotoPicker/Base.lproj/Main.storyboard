@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vJn-HK-Bf9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Foto Picker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="swift3FotoPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,70 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="B7Q-qg-8Ob">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="u8n-oz-j2p"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recuerda escribir texto en Info.plist para &quot;Privacy - Photo Library Usage Description&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2H-Mp-KTj">
+                                <frame key="frameInset" minX="16" minY="394" width="343" height="113"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Z2H-Mp-KTj" firstAttribute="top" secondItem="B7Q-qg-8Ob" secondAttribute="bottom" constant="30" id="8nv-XR-ACB"/>
+                            <constraint firstItem="B7Q-qg-8Ob" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ca3-Pe-joK"/>
+                            <constraint firstItem="Z2H-Mp-KTj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Rmd-eH-guf"/>
+                            <constraint firstAttribute="trailing" secondItem="B7Q-qg-8Ob" secondAttribute="trailing" id="nTT-hw-zaR"/>
+                            <constraint firstItem="B7Q-qg-8Ob" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rBV-gC-rgA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z2H-Mp-KTj" secondAttribute="trailing" id="swK-Ll-3sx"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Foto Picker" id="xQS-dm-jgf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="gZ9-Og-RY8">
+                            <connections>
+                                <action selector="imagenButtonClicked:" destination="BYZ-38-t0r" id="9xv-bS-1hk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y9d-5z-gD9">
+                            <connections>
+                                <action selector="saveButtonClicked:" destination="BYZ-38-t0r" id="8zk-4D-uah"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imagenFoto" destination="B7Q-qg-8Ob" id="fgr-J8-Abu"/>
+                        <outlet property="saveButtonClicked" destination="Y9d-5z-gD9" id="5c6-Wi-FXJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="136.28185907046478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="adb-DY-dQl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vJn-HK-Bf9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r4e-ZU-Yfw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="58S-ct-iau"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzz-b8-fja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="212" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo" width="210" height="210"/>
+    </resources>
 </document>
