@@ -46,9 +46,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         do {
            let imagenPath = getDocumnetsDirectory().appendingPathComponent(nombreImagen)
             
+            
+           
+            
             //Las imagenes no se pueden guardar de forma directa, hay que trabajar a nivel de bytes con UIImageJPEGRepresentation
             if let jpegData = UIImageJPEGRepresentation(self.imagenFoto.image!, 0.8){
                 try jpegData.write(to: imagenPath, options: [.atomicWrite])
+                /*
+                 Tambien se puede guardar en PhotpAlbum directamente
+                 
+                 let imagenData = UIImage(data: jpegData)
+                 UIImageWriteToSavedPhotosAlbum( imagenData , nil, nil, nil)
+                 */
+                
             }
             laberText.text = "😁 Imagen guardada con exito"
             
@@ -62,6 +72,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    @IBAction func cameraButtonClicked(_ sender: UIBarButtonItem) {
+         NSLog("Camara de fotos")
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let vc = UIImagePickerController()
+            vc.delegate = self
+            vc.sourceType = UIImagePickerControllerSourceType.camera;
+            vc.allowsEditing = false
+            navigationController?.present(vc, animated: true, completion: nil)
+        }else{
+            
+            let alert = UIAlertController(title: "Camara no disponible", message: "", preferredStyle: .alert)
+            let alertCancel = UIAlertAction(title: "Cerrar", style: .cancel , handler: nil)
+            alert.addAction(alertCancel)
+            navigationController?.present(alert, animated: true, completion: nil)
+ 
+        }
+    }
     
     //Retornamos la URL primera carpeta del usuario que encontremos
     func getDocumnetsDirectory() -> URL {

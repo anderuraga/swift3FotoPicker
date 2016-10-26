@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +25,8 @@
                                     <constraint firstAttribute="height" constant="300" id="u8n-oz-j2p"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuerda escribir texto en Info.plist para &quot;Privacy - Photo Library Usage Description&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2H-Mp-KTj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2H-Mp-KTj">
+                                <string key="text">Recuerda escribir texto en Info.plist para "Privacy - Photo Library Usage Description"  CUIDADO: La Cámara no funciona en el emulador</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +43,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Foto Picker" id="xQS-dm-jgf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="gZ9-Og-RY8">
-                            <connections>
-                                <action selector="imagenButtonClicked:" destination="BYZ-38-t0r" id="9xv-bS-1hk"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="organize" id="gZ9-Og-RY8">
+                                <connections>
+                                    <action selector="imagenButtonClicked:" destination="BYZ-38-t0r" id="9xv-bS-1hk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="jtG-Eb-hwC">
+                                <connections>
+                                    <action selector="cameraButtonClicked:" destination="BYZ-38-t0r" id="YTt-9l-x1y"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y9d-5z-gD9">
                             <connections>
                                 <action selector="saveButtonClicked:" destination="BYZ-38-t0r" id="8zk-4D-uah"/>
